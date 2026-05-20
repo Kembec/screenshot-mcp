@@ -19,6 +19,7 @@ which = "6"
 dirs = "5"
 chromiumoxide = { version = "0.7", features = ["tokio-runtime", "_fetcher-native-tokio"], default-features = false }
 futures = "0.3"
+openssl = { version = "0.10", features = ["vendored"] }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }
