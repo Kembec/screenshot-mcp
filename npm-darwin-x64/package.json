@@ -1,0 +1,23 @@
+{
+  "name": "@kembec/screenshot-mcp-darwin-x64",
+  "version": "0.1.0",
+  "description": "screenshot-mcp binary for darwin x64",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "bin": {
+    "screenshot-mcp": "bin/screenshot-mcp"
+  },
+  "files": [
+    "bin/screenshot-mcp",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kembec/screenshot-mcp.git"
+  },
+  "license": "MIT"
+}

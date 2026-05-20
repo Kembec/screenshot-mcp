@@ -1,0 +1,7 @@
+/target
+.DS_Store
+npm-*/bin/
+node_modules/
+.screenshots/
+.env
+.env.*

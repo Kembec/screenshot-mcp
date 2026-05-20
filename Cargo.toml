@@ -1,0 +1,24 @@
+[package]
+name = "screenshot-mcp"
+version = "0.1.0"
+edition = "2021"
+description = "Capture full-page and viewport screenshots of any URL via Chrome DevTools Protocol"
+license = "MIT"
+
+[[bin]]
+name = "screenshot-mcp"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+base64 = "0.22"
+which = "6"
+dirs = "5"
+chromiumoxide = { version = "0.7", features = ["tokio-runtime", "_fetcher-native-tokio"], default-features = false }
+futures = "0.3"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
