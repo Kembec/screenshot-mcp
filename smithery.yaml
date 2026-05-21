@@ -1,0 +1,14 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      CHROME_PATH:
+        type: string
+        description: "Path to a Chromium-compatible binary (optional, auto-detected if omitted)"
+  commandFunction: |
+    (config) => ({
+      command: "npx",
+      args: ["-y", "@kembec/screenshot-mcp"],
+      env: config.CHROME_PATH ? { CHROME_PATH: config.CHROME_PATH } : {}
+    })
