@@ -1,11 +1,20 @@
 {
   "name": "@kembec/screenshot-mcp-linux-arm64",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "screenshot-mcp binary for linux arm64",
-  "os": ["linux"],
-  "cpu": ["arm64"],
-  "bin": { "screenshot-mcp": "bin/screenshot-mcp" },
-  "files": ["bin/screenshot-mcp", "README.md"],
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "bin": {
+    "screenshot-mcp": "bin/screenshot-mcp"
+  },
+  "files": [
+    "bin/screenshot-mcp",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Kembec/screenshot-mcp.git"

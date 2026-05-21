@@ -1,6 +1,6 @@
 [package]
 name = "screenshot-mcp"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 description = "Capture full-page and viewport screenshots of any URL via Chrome DevTools Protocol"
 license = "MIT"
