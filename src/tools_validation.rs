@@ -50,10 +50,7 @@ pub fn validate_capture_page(args: &Value) -> Result<CaptureParams> {
         .unwrap_or("networkidle");
     validate_wait_strategy(wait_strategy)?;
 
-    let format = args
-        .get("format")
-        .and_then(|v| v.as_str())
-        .unwrap_or("png");
+    let format = args.get("format").and_then(|v| v.as_str()).unwrap_or("png");
     if !VALID_FORMATS.contains(&format) {
         return Err(anyhow!(
             "format must be one of: {}",
@@ -67,7 +64,10 @@ pub fn validate_capture_page(args: &Value) -> Result<CaptureParams> {
     }
 
     let width = args.get("width").and_then(|v| v.as_u64()).map(|v| v as u32);
-    let height = args.get("height").and_then(|v| v.as_u64()).map(|v| v as u32);
+    let height = args
+        .get("height")
+        .and_then(|v| v.as_u64())
+        .map(|v| v as u32);
 
     if viewport == "custom" && (width.is_none() || height.is_none()) {
         return Err(anyhow!(

@@ -126,9 +126,7 @@ mod tests {
     #[test]
     fn tools_list_url_is_required() {
         let v = tools_list();
-        let required = v["tools"][0]["inputSchema"]["required"]
-            .as_array()
-            .unwrap();
+        let required = v["tools"][0]["inputSchema"]["required"].as_array().unwrap();
         assert!(required.iter().any(|r| r == "url"));
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@kembec/screenshot-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Capture full-page screenshots of any URL via Chrome DevTools Protocol — single static binary",
   "bin": { "screenshot-mcp": "./index.js" },
   "main": "./index.js",
@@ -9,11 +9,11 @@
   },
   "files": ["index.js", "postinstall.js", "README.md"],
   "optionalDependencies": {
-    "@kembec/screenshot-mcp-darwin-arm64": "0.1.0",
-    "@kembec/screenshot-mcp-darwin-x64": "0.1.0",
-    "@kembec/screenshot-mcp-linux-x64": "0.1.0",
-    "@kembec/screenshot-mcp-linux-arm64": "0.1.0",
-    "@kembec/screenshot-mcp-win32-x64": "0.1.0"
+    "@kembec/screenshot-mcp-darwin-arm64": "0.1.1",
+    "@kembec/screenshot-mcp-darwin-x64": "0.1.1",
+    "@kembec/screenshot-mcp-linux-x64": "0.1.1",
+    "@kembec/screenshot-mcp-linux-arm64": "0.1.1",
+    "@kembec/screenshot-mcp-win32-x64": "0.1.1"
   },
   "engines": { "node": ">=18" },
   "license": "Apache-2.0",

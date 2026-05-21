@@ -52,10 +52,10 @@ impl ViewportConfig {
                 user_agent: Some(MOBILE_UA.to_string()),
             }),
             "custom" => {
-                let w = width
-                    .ok_or_else(|| anyhow::anyhow!("width required for custom viewport"))?;
-                let h = height
-                    .ok_or_else(|| anyhow::anyhow!("height required for custom viewport"))?;
+                let w =
+                    width.ok_or_else(|| anyhow::anyhow!("width required for custom viewport"))?;
+                let h =
+                    height.ok_or_else(|| anyhow::anyhow!("height required for custom viewport"))?;
                 Ok(Self {
                     width: w,
                     height: h,

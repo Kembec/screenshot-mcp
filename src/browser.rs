@@ -61,9 +61,7 @@ pub async fn capture(params: &CaptureParams) -> Result<ScreenshotResult> {
     .await
     .context("failed to launch Chrome")?;
 
-    let handler_task = tokio::spawn(async move {
-        while handler.next().await.is_some() {}
-    });
+    let handler_task = tokio::spawn(async move { while handler.next().await.is_some() {} });
 
     let result = do_capture(&mut browser, params, &viewport).await;
 
@@ -85,7 +83,14 @@ async fn do_capture(
 
     inject_stealth(&page).await?;
 
-    apply_device_metrics(&page, viewport.width, viewport.height, viewport.device_scale_factor, viewport.mobile).await?;
+    apply_device_metrics(
+        &page,
+        viewport.width,
+        viewport.height,
+        viewport.device_scale_factor,
+        viewport.mobile,
+    )
+    .await?;
 
     let ua = viewport.user_agent.as_deref().unwrap_or(DEFAULT_DESKTOP_UA);
     apply_user_agent(&page, ua).await?;
@@ -112,7 +117,15 @@ async fn do_capture(
     let (capture_width, capture_height) = if params.full_page {
         let full_h = get_scroll_height(&page).await?;
         if full_h > viewport.height {
-            apply_device_metrics(&page, viewport.width, full_h, viewport.device_scale_factor, viewport.mobile).await.ok();
+            apply_device_metrics(
+                &page,
+                viewport.width,
+                full_h,
+                viewport.device_scale_factor,
+                viewport.mobile,
+            )
+            .await
+            .ok();
             tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
         }
         (viewport.width, full_h)
@@ -318,16 +331,12 @@ fn chrome_candidates() -> Vec<String> {
     ];
 
     #[cfg(target_os = "macos")]
-    candidates.push(
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome".to_string(),
-    );
+    candidates.push("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome".to_string());
 
     #[cfg(target_os = "windows")]
     {
         candidates.push(r"C:\Program Files\Google\Chrome\Application\chrome.exe".to_string());
-        candidates.push(
-            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe".to_string(),
-        );
+        candidates.push(r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe".to_string());
     }
 
     candidates
