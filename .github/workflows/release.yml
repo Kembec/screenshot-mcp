@@ -25,7 +25,7 @@ jobs:
             target: x86_64-unknown-linux-musl
             platform_dir: npm-linux-x64
             bin: screenshot-mcp
-          - os: ubuntu-latest
+          - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
             platform_dir: npm-linux-arm64
             bin: screenshot-mcp
@@ -55,11 +55,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y musl-tools
-          if [[ "${{ matrix.target }}" == "aarch64-unknown-linux-musl" ]]; then
-            sudo apt-get install -y gcc-aarch64-linux-gnu
-            echo "[target.aarch64-unknown-linux-musl]" >> ~/.cargo/config.toml
-            echo 'linker = "aarch64-linux-gnu-gcc"' >> ~/.cargo/config.toml
-          fi
+          echo "musl-tools installed"
       - name: Install Chrome (Linux x64)
         if: matrix.target == 'x86_64-unknown-linux-musl'
         run: |
@@ -68,7 +64,6 @@ jobs:
           sudo apt-get update && sudo apt-get install -y google-chrome-stable
       - name: Build release binary
         shell: bash
-          CC_aarch64_unknown_linux_gnu: aarch64-linux-gnu-gcc
         run: cargo build --release --locked --target ${{ matrix.target }}
       - name: Stage binary
         shell: bash
